@@ -1,0 +1,48 @@
+<html ng-app="WIMF">
+
+<head>
+  <title>WIMF!</title>
+
+   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+   <link href="./favicon.ico" rel="icon" type="image/x-icon" />
+   <!-- Material Design Lite Stylesheets & Google icons-->
+   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+   <link rel="stylesheet" href="libs/material-design-lite/material.min.css">
+
+   <!-- Importing font family -->
+   <link href='https://fonts.googleapis.com/css?family=Acme' rel='stylesheet' type='text/css'>
+
+   <!-- Loading main stylesheet -->
+   <link href="./dist/css/style.min.css" rel="stylesheet">
+</head>
+
+<body ng-controller="MainCtrl">
+
+    <div class="wrap">
+      <div ng-include="'partials/includes/header.html'"></div>
+      <div class="content" ng-view></div>
+    </div>
+
+</body>
+
+
+    <!-- Importing Angular, ngRoutes and ngResource -->
+    <script type="text/javascript" src="/node_modules/angular/angular.min.js"></script>
+    <script type="text/javascript" src="/node_modules/angular-route/angular-route.min.js"></script>
+    <script type="text/javascript" src="/node_modules/angular-resource/angular-resource.min.js"></script>
+
+    <!-- Importing Material Design lite assets -->
+    <script src="libs/material-design-lite/material.min.js"></script>
+
+
+    <!-- Loading the Angular App -->
+    <script type="text/javascript" src="./dist/js/app.min.js"></script>
+
+    <!-- LiveReload functionnality (dev only)
+    <script src="//localhost:35729/livereload.js"></script> -->
+
+
+    <!-- Script to refresh Material Components on template rendering -->
+    <script src="./js/DomtriggerMDL.js"></script>
+
+</html>

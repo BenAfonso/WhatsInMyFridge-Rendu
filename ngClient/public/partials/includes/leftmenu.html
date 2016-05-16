@@ -1,0 +1,25 @@
+<div id="sidebar-menu" ng-class="{'visible' : leftMenu}">
+    <ul>
+      <li><ul>
+      <li>
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+          <input class="mdl-textfield__input" type="text" id="searchBar" ng-model="search.productName">
+          <label class="mdl-textfield__label" for="searchBar">Rechercher...</label>
+        </div>
+      </li></ul></li>
+      <li><a ng-click="toggleFiltersMenu()">Filtrer</a></li>
+        <ul ng-show="showFiltersMenu">
+          <li>Des filtres</li>
+        </ul>
+      <li><a ng-click="toggleSortingMenu()">Trier</a></li>
+        <ul ng-show="showSortingMenu">
+          <li ng-repeat="category in categories">{{category.categoryName}}</li>
+        </ul>
+    </ul>
+
+        <div id="pull-bar">
+          <div id="sidebar-btn" ng-click="toggleLeftMenu()">
+                <i class="material-icons">search</i>
+          </div>
+        </div>
+  </div>

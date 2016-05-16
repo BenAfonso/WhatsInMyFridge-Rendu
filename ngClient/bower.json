@@ -1,0 +1,26 @@
+{
+  "name": "ngclient",
+  "description": "Angular client for What's in my Fridge Application (Interacting with REST Api)",
+  "main": "index.js",
+  "authors": [
+    "Benjamin AFONSO"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/Darkyler/WhatsInMyFridge",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "susy": "^2.2.12",
+    "breakpoint-sass": "^2.7.0",
+    "material-design-lite": "^1.1.3"
+  },
+  "install": {
+    "path": "libs"
+  }
+}

@@ -1,0 +1,57 @@
+<div class="center-container">
+  <div class="banner"><span> Produit </span></div>
+  <div id="product">
+
+    <img id="productImg" ng-src="{{product.img}}"/>
+    <div id="productInfo">
+      <div id="productTitle"> {{product.productName}} </div>
+
+      <div id="productStock"> Votre stock : {{product.quantity}} / {{product.max}}</div>
+    </div>
+    <div id="newItem">
+      <i class="material-icons" ng-click="showAddItem()">add</i>
+      <form class="" ng-show="addItemShown()" ng-submit="saveItem(newItem)">
+        <div id="itemQuantity" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+          <input class="mdl-textfield__input" type="text" ng-model="newItem.quantity" pattern="-?[0-9]*(\.[0-9]+)?">
+          <label class="mdl-textfield__label" for="sample4">Quantité</label>
+          <span class="mdl-textfield__error">Ce n'est pas une quantité valide !</span>
+        </div>
+        <div id="itemUnit" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+          <input class="mdl-textfield__input" type="text" ng-model="newItem.unit">
+          <label class="mdl-textfield__label" for="sample4">Unité</label>
+        </div>
+        <button type="submit" id="submitProduct" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+          Ajouter
+        </button>
+      </form>
+    </div>
+
+
+  </div>
+  <div id="productItems">
+    <div class="itemRow" ng-show="addItemShown()">
+      <div class="box">
+        <div> Ajouté le: {{ currentDate | date:"dd/MM/yyyy" }}</div>
+        <div> Quantité restante: {{newItem.quantity}} {{newItem.unit}}</div>
+        <div> Quantité initiale: {{newItem.quantity}} {{newItem.unit}}</div>
+        <div class="progress"><div style="width:100%" class="current"><span class="ratio">100%</span></div></div>
+      </div>
+    </div>
+      <div class="itemRow" ng-repeat="item in items">
+
+        <div class="box">
+        <div> Ajouté le: {{ item.created_at | date:"dd/MM/yyyy" }}</div>
+        <div> Quantité restante: {{item.quantity}} {{item.unit}}</div>
+        <div> Quantité initiale: {{item.max}} {{item.unit}}</div>
+        <div class="progress" ng-hide="editingItem(item)"><div style="width:{{item.ratio}}%" class="current"><span class="ratio">{{ item.ratio }}%</span></div></div>
+        <div style="width:100%" ng-show="editingItem(item)">
+            <input class="mdl-slider mdl-js-slider" type="range" ng-model="item.quantity" min="0" max="{{item.max}}" value="{{item.quantity}}" step="1">
+        </div>
+      </div>
+      <div class="control-box">
+        <div class="up" ng-click="toggleEditItem(item)"><i class="material-icons">mode_edit</i></div>
+        <div class="down" ng-show="editingItem(item)" ng-click="updateItem(item)"><i class="material-icons">save</i></div>
+      </div>
+    </div>
+  </div>
+</div>

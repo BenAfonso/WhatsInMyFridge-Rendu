@@ -1,0 +1,81 @@
+<div id="sidebar-menu" ng-class="{'visible' : leftMenu}">
+    <ul>
+      <li>
+        <div id="searchBar" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+          <input class="mdl-textfield__input" type="text" ng-model="search.productName">
+          <label class="mdl-textfield__label" for="searchBar">Rechercher...</label>
+        </div>
+      </li>
+      <li><a ng-click="selectCategory()">Toutes les catégories</a></li>
+      <li ng-repeat="category in categories"><a ng-class="{'selected' : isSelectedCategory(category)}" ng-click="selectCategory(category)">{{category.categoryName}}
+        <span ng-show="isSelectedCategory(category)" confirmed-click="deleteCategory(category)"
+        ng-confirm-click="Êtes vous sur de vouloir supprimer cette catégorie ?" id="deleteCategory" class="material-icons">delete</span></a></li>
+      <li><a ng-click="toggleNewCategory()">Ajouter une catégorie</a></li>
+      <li ng-show="displayNewCategory">
+        <div id="newCategory" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+          <input class="mdl-textfield__input" type="text" ng-model="newCategory.categoryName">
+          <label class="mdl-textfield__label" for="newCategory">Nom de la catégorie</label>
+        </div>
+        <button id="submitForm" class="mdl-button mdl-js-button mdl-button--raised" ng-click="addCategory(newCategory)">Enregistrer</button>
+      </li>
+    </ul>
+
+        <div id="pull-bar">
+          <div id="sidebar-btn" ng-click="toggleLeftMenu()">
+                <i class="material-icons">search</i>
+          </div>
+        </div>
+  </div>
+
+<div class="container" ng-class="{'visible' : leftMenu}">
+  <!-- Flex container containing products -->
+  <div class="flex-container">
+    <div ng-repeat="product in products | filter:search | orderBy:'-quantity'" ng-show="isSelectedCategory(product.category)" class="itembox" ng-click="selectProduct(product)">
+      <div class="item"><img ng-src="{{product.img}}"></img>
+        <div class="editItem" ng-show="isSelected(product)">
+            <i class="material-icons" confirmed-click="deleteProduct(product)"
+            ng-confirm-click="Êtes vous sur de vouloir supprimer ce produit ?" ng-show="!isModifying(product)">clear</i>
+            <i class="material-icons" ng-click="toggleModifyProduct(product)">mode edit</i>
+        </div>
+
+        <div class="placeholder">
+          <span class="itemName" ng-click="go('/product/'+product.idProduct)">{{product.productName}}</span>
+          <span class="itemQuantity">{{product.quantity}}</span>
+        </div>
+      </div>
+      <div class="modifyItemBox" ng-class="{ 'active' : isModifying(product) }">
+          <form name="newitem" ng-submit="modifyProduct(product)">
+              <div class="modifyInput mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input" type="text" id="itemName" ng-model="product.productName">
+                <label class="mdl-textfield__label" for="itemName">Nom</label>
+              </div>
+              <div class="modifyInput mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input" type="text" id="img" ng-model="product.img">
+                <label class="mdl-textfield__label" for="img">Image</label>
+              </div>
+              <button id="submitForm" class="mdl-button mdl-js-button mdl-button--raised" type="submit">Save</button>
+          </form>
+      </div>
+    </div>
+  </div>
+  <!-- / Flex container -->
+  <div class="formContainer">
+    <button class="addButton mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored" ng-click="toggleAddForm()">
+      <i class="material-icons">add</i>
+    </button>
+    <form class="addForm" ng-class="{'displayed' : addFormDisplayed }" ng-submit="addProduct(newProduct)" novalidate>
+        <div class="mdl-textfield mdl-js-textfield" id="itemNameInput">
+          <input class="mdl-textfield__input" type="text" id="itemName" ng-model="newProduct.productName">
+          <label class="mdl-textfield__label" for="itemName">Nom de l'item</label>
+        </div>
+        <div class="mdl-textfield mdl-js-textfield" id="imgInput">
+          <input class="mdl-textfield__input" type="text" id="img" ng-model="newProduct.img" pattern="(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?">
+          <label class="mdl-textfield__label" for="img">Image</label>
+          <span class="mdl-textfield__error">Ceci n'est pas une URL valide</span>
+        </div>
+        <button id="addItem" type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+          Ajouter !
+        </button>
+    </form>
+    </div>
+</div>

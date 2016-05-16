@@ -1,0 +1,42 @@
+<div class="center-container">
+
+<h3>Mes recettes</h3>
+
+<div class="recipes-container">
+  <div class="recipe-container canDo" ng-show="addFormDisplayed">
+      <span id="recipeName">{{newRecipe.recipeName}}</span>
+  </div>
+
+  <div class="recipe-container" ng-class="" ng-repeat="recipe in recipes">
+      <div id="recipeName">{{recipe.recipeName}}</div>
+      <span id="canDo">{{recipe.canDo}}</span>
+      <div class="ingredient" ng-repeat="ingredient in recipe.ingredients">
+        <img ng-src="{{ingredient.product.img}}"/>
+        {{ingredient.product.productName}} - {{ingredient.quantity}}
+      </div>
+      <div id="addIngredients" ng-click="go('/recette/'+recipe.idRecipe)">Ajouter des ingrédients</div>
+      <div id="deleteRecipe"><i class="material-icons" ng-click="deleteRecipe(recipe)">clear</i></div>
+
+  <div class="ingredientsDisplay">
+    <div class="ingredient" ng-repeat="product in products">
+      {{product.productName}}
+
+    </div>
+  </div>
+
+  </div>
+
+</div>
+<div class="formContainer">
+  <button class="addButton mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored" ng-click="toggleAddForm()">
+    <i class="material-icons">add</i>
+  </button>
+  <form class="addForm" ng-class="{'displayed' : addFormDisplayed }" ng-submit="addRecipe(newRecipe)" novalidate>
+      <div class="mdl-textfield mdl-js-textfield" id="recipeNameInput">
+        <input class="mdl-textfield__input" type="text" id="recipeName" ng-model="newRecipe.recipeName">
+        <label class="mdl-textfield__label" for="recipeName">Nom de la recette</label>
+      </div>
+      <button id="addRecipe" ng-show="addFormDisplayed" class="mdl-button mdl-js-button" type="submit">Ajouter</button>
+  </form>
+  </div>
+</div>

@@ -1,0 +1,47 @@
+<link href="./dist/css/login.min.css" rel="stylesheet">
+
+<div class="login">
+  <div class="tablet-visible" id="pageTitle">WIMF !</div>
+  <div class="left-container tablet-visible">
+
+  <section id="presentation">
+      <h1> What's in my Fridge ! </h1>
+      <p> Bienvenue sur What's in my Fridge ( <b>WIMF</b> ), une application web qui va vous permettre de bien gérer
+          ce qu'il vous reste dans votre frigo. <b> WIMF </b> vous donnera une vision claire de vos réserves de
+          nourriture afin de vous permettre d'être plus efficace lors des courses ou encore de la préparation
+          de vos p'tits plats !
+      </p>
+  </section>
+  </div>
+  <div class="container">
+      <div id="fridge">
+        <img src="/img/frigologo2.png"/>
+
+        <form ng-submit="register()">
+           <!--<span id="usernamePlaceholder">Nom d'utilisateur</span>-->
+           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="usernameInput">
+             <input class="mdl-textfield__input" type="text" id="username" ng-model="username">
+             <label class="mdl-textfield__label" for="username">Nom d'utilisateur</label>
+           </div>
+          <!--<span id="passwordPlaceholder">Mot de passe</span>-->
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="passwordInput1">
+            <input class="mdl-textfield__input" type="password" id="password" ng-model="password">
+            <label class="mdl-textfield__label" for="password">Mot de passe</label>
+          </div>
+
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="passwordInput2">
+            <input class="mdl-textfield__input" type="password" id="password2" ng-model="password2">
+            <label class="mdl-textfield__label" for="password2">Encore une fois !</label>
+          </div>
+          <a id="signup" ng-click="go('/login')" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+              Se connecter
+            </a>
+          <button id="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+            S'enregistrer
+          </button>
+        </form>
+      </div>
+    </div>
+
+
+</div>

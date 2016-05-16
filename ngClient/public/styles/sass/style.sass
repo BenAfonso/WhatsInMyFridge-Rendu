@@ -1,0 +1,772 @@
+@import "../../../bower_components/susy/sass/susy"
+@import "../../../bower_components/breakpoint-sass/stylesheets/breakpoint"
+
+
+// Grid settings
+$susy:(columns: 24,debug: (image: hide),global-box-sizing: border-box)
+
+// Variables
+$computer: 970px
+$tablet: 730px
+$phone: 480px
+
+// Colors
+$menu: url('/img/menu.png')
+$footer: $menu
+$menu-dropdown-color: #129ab3
+$background: url('/img/bg.png')
+$menu-dropdown-borders-color: #ffffff
+$menu-item-background-color: #e86d57
+$left-menu-background: url('/img/menugauche.png')
+$sidebar-color: #0ba2bd
+$left-menu-buttons-hover: #e86d57
+$modifying-item-color: #dd6b6b
+$stockItemsColor--placeholder: white
+
+@include border-box-sizing
+
+
+/*****************************************
+ *           Page wrapper
+ *****************************************/
+*
+  margin: 0
+  padding: 0
+
+html
+  min-width: 298px
+
+
+body
+  max-height: calc(100% - 60px)
+  background-image: $background
+  font-family: 'Acme', sans-serif
+
+
+
+
+.wrap
+  @include container(24)
+  min-width: 298px
+
+
+/*****************************************
+ *           Home
+ *****************************************/
+
+#homeWrapper
+  position: relative
+  height: calc(100% - 60px)
+#homeBackground
+  position: absolute
+  width: 100%
+  height: calc(100vh + 60px)
+  background-image: url('/img/homebg.jpg')
+  background-size: cover
+  background-position: center
+  opacity: 0.4
+#homeContent
+  position: relative
+  background-color: #ac9494
+  height: 45%
+  width: 80%
+  margin-left: 10%
+  margin-top: 20%
+  padding: 40px
+  border-style: ridge
+  border-width: thick
+  border-right-color: black
+  border-left-color: black
+  border-top-left-radius: 15px
+  border-bottom-right-radius: 15px
+  #welcome
+    color: white
+    font-weight: bolder
+    font-size: 25px
+    margin-bottom: 20px
+    text-align: center
+  #intro
+    color: white
+    font-weight: bold
+    margin: 0 auto
+    max-width: 500px
+    text-align: center
+
+
+/*****************************************
+ *           Responsive Header
+ *****************************************/
+#header
+  z-index: 2
+  position: fixed
+  top: 0
+  width: 100%
+  height: 60px
+  line-height: 60px
+  background: $menu
+  color: white
+
+  .logo
+    position: absolute
+    top: 0
+    left: 3%
+    text-transform: uppercase
+    img
+      height: 50px
+      vertical-align: middle
+      margin-right: 10px
+    #title
+      font-size: 30px
+      vertical-align: middle
+      font-weight: bold
+
+  #openNav
+    position: absolute
+    right: 0
+    top: 0
+    width: 20px
+    height: 15px
+    margin: 20px
+    span
+      height: 3px
+      right: 0
+      background-color: #111
+      margin-bottom: 5px
+      display: block
+  #nav
+    width: calc(100% - 60px)
+    margin-top: 60px
+    height: 0px
+    float: right
+    ul
+      background: $menu-dropdown-color
+      width: 100%
+      li
+        float: none
+        list-style-type: none
+        a
+          color: white
+          display: block
+          text-decoration: none
+          height: 40px
+          padding: 8px
+          &:hover
+            background-color: $menu-item-background-color
+
+  #nav ul
+    transition: 350ms
+    -moz-transition: 350ms
+    -webkit-transition: 350ms
+    transform: perspective(600px) rotate3d(0,0,0,0)
+    -moz-transform: perspective(600px) rotate3d(1,0,0,-90deg)
+    -webkit-transform: perspective(600px) rotate3d(1,0,0,-90deg)
+    transform-origin: 50% 0
+    -moz-transform-origin: 50% 0
+    -webkit-transform-origin: 50% 0
+    list-style-type: none
+  #nav.open
+    display: block
+    float: right
+    margin-top: 60px
+    ul
+      transform: translateY(0px)
+      -moz-transform: perspective(600px) rotate3d(0,0,0,0)
+      -webkit-transform:  perspective(600px) rotate3d(0,0,0,0)
+
+/*****************************************
+ *           Page content
+ *****************************************/
+.content
+  @include container(24)
+  height: calc(100% - 60px)
+  margin-top: 60px
+
+/*****************************************
+ *           Left menu
+ *****************************************/
+
+#sidebar-menu
+  position: fixed
+  left: -200px
+  transition: left 0.1s linear
+  background-color: $sidebar-color
+  height: calc(100% - 60px)
+  width: 200px
+  #searchBar
+    width: 150px
+    margin-left: 25px
+  ul
+    margin: 0px
+    padding: 0px
+    li
+      margin-bottom: 0px
+      list-style: none
+      a
+        background: $sidebar-color
+        color: white
+        font-weight: bold
+        width: 100%
+        padding: 10px
+        display: block
+        text-decoration: none
+        &:hover
+          background: $left-menu-buttons-hover
+      a.selected
+        background-color: #fac651
+#pull-bar
+  display: inline-block
+  position: absolute
+  right: -60px
+  top: 0px
+  width: 60px
+  background: $menu
+
+#sidebar-btn
+  z-index: 2
+  display: inline-block
+  vertical-align: middle
+  width: 20px
+  height: 15px
+  cursor: pointer
+  margin: 20px
+  top: 0px
+  right: -60px
+
+  span
+    height: 1px
+    background: #111
+    margin-bottom: 5px
+    display: block
+    &:nth-child(2)
+      width: 75%
+    &:nth-child(3)
+      width: 50%
+
+#sidebar-menu.visible
+  z-index: 1
+  left: 0px
+  width: 250px
+  transition: left 0.1s linear
+
+#deleteCategory
+  float: right
+/*****************************************
+ *           Big container
+ *****************************************/
+.container
+  margin-left: 60px
+  height: calc(100vh - 60px)
+
+.flex-container
+  max-width: 80%
+  margin: 0 auto
+  display: flex
+  flex-wrap: wrap
+  flex-direction: row
+  padding-top: 10px
+
+
+/*****************************************
+ *           Add item button
+ *****************************************/
+.formContainer
+  position: fixed
+  bottom: 50px
+  right: 30px
+.addButton
+  position: absolute
+  bottom: 0px
+  right: 0px
+
+/*****************************************
+ *           Add Item form (animated)
+ *****************************************/
+.addForm
+  position: static
+  margin-right: 45px
+  margin-bottom: 45px
+  height: 0px
+  width: 0px
+  transition: width 0.2s ease-out
+  transition: height 0.2s ease-out
+  overflow: hidden
+
+
+
+.addForm.displayed
+  height: 200px
+  width: 240px
+  padding: 15px
+  transition: width 0.2s ease-in
+  transition: height 0.2s ease-in
+  background-image: url('/img/bulle.gif')
+  #itemNameInput
+    max-width: 180px
+    position: absolute
+    top: 10px
+  #imgInput
+    max-width: 180px
+    position: absolute
+    top: 60px
+  #addItem
+    position: absolute
+    bottom: 80px
+
+/*****************************************
+ *           Items
+ *****************************************/
+.itembox
+  padding: 5px
+  position: relative
+
+.modifyItemBox
+  display: none
+  position: absolute
+  top: 5px
+  left: 5px
+  min-width: 175px
+  height: 195px
+  background-color: $modifying-item-color
+  padding: 10px
+  .modifyInput
+    width: 100%
+  .modifyInput__small
+    width: 50%
+
+  #submitForm
+    position: absolute
+    bottom: 5px
+    right: 5px
+
+.active
+  display: block
+
+.item
+  background: url('/img/itembox2.png')
+  background-repeat: no-repeat
+  background-size: contain
+  min-width: 160px
+  min-height: 200px
+  padding: 8px
+
+  img
+    height: 134px
+    width: 160px
+
+  .editItem
+    position: absolute
+    top: 13px
+    right: 14px
+
+  .selectProduct
+    @extend .editItem
+    top: 115px
+    .material-icons
+      font-size: 30px
+
+
+  .placeholder
+    position: absolute
+    width: 160px
+    padding: 8px
+    .itemName
+      float: left
+      font-weight: bold
+      color: white
+      cursor: pointer
+    .itemQuantity
+      float: right
+      font-weight: bold
+
+/*****************************************
+ *           Product Page
+ *****************************************/
+#product
+  padding: 5px
+  width: auto
+  height: auto
+  margin-bottom: 40px
+  border-radius: 20px
+  background-color: #88b2c4
+  #productImg
+    float: left
+    width: 100px
+    height: 100px
+    border: 3px solid #429feb
+    border-radius: 12px
+    margin-right: 30px
+  #productInfo
+    height: 100px
+    margin-top: 10px
+    #productTitle
+      font-weight: 600
+      font-size: 24px
+    #productStock
+      margin-top: 6px
+
+.banner
+  position: relative
+  margin-bottom: 30px
+  background-image: url('/img/banner.gif')
+  background-repeat: no-repeat
+  background-size: contain
+  width: 100%
+  line-height: 90px
+  text-align: center
+  color: white
+  font-weight: bold
+
+
+#newItem
+  text-align: center
+  width: 80%
+  margin: 0 auto
+  #submitProduct
+    display: block
+    margin: 0 auto
+
+.itemRow
+  width: 85%
+  margin: 0 auto
+  height: 120px
+
+#productItems .box
+  font-weight: bold
+  color: white
+  padding: 20px
+  height: inherit
+  width: 90%
+  float: left
+  margin-bottom: 20px
+  border-radius: 20px
+  background-color: #11b2dd
+  .progress
+    margin-top: 10px
+    height: 10px
+    width: 100%
+    background-color: white
+    .current
+      height: 10px
+      background-color: #5ecd7a
+      .ratio
+        font-weight: bold
+        color: white
+        float: right
+        margin-top: 10px
+
+.itemRow .control-box
+  width: 10%
+  height: inherit
+  float: right
+  display: block
+  .material-icons
+    font-size: 49px
+  .up
+    display: block
+    height: 50%
+  .down
+    display: block
+    height: 50%
+
+/*****************************************
+ *           Recipes
+ *****************************************/
+
+.recipe-container
+  position: relative
+  height: auto
+  width: 80%
+  background-color: #fb7c66
+  margin: 0 auto
+  margin-top: 15px
+  border-radius: 20px
+  padding: 20px
+  #recipeName
+    font-weight: bold
+    margin-bottom: 10px
+  #deleteRecipe
+    position: absolute
+    top: 10px
+    right: 10px
+  .ingredient
+    color: white
+    display: block
+    font-weight: bold
+    img
+      width: 30px
+      height: 30px
+      margin-bottom: 4px
+      border-radius: 6px
+
+  // FIX THE INDICATOR !! TODO
+  .indicator
+    background-color: orange
+    height: 20px
+    width: 20px
+  .indicator.available
+    background-color: green
+
+.recipe-container.canDo
+  background-color: #77f19d
+
+.center-container
+  width: 90%
+  margin: 0 auto
+
+/*****************************************
+ *           Recipe
+ *****************************************/
+
+.headTitle
+  text-align: center
+  margin-top: 85px
+  font-size: 25px
+  font-weight: bold
+  height: 40px
+  line-height: 40px
+  .cross
+    display: inline-block
+    width: 30px
+    height: 5px
+    margin-bottom: 6px
+    background-color: red
+
+.localTitle
+  font-weight: bold
+  font-size: 22px
+  margin-bottom: 20px
+  margin-top: 20px
+  height: 60px
+  line-height: 60px
+  text-align: center
+  border: 2px solid black
+
+.products-list
+  width: 100%
+  display: flex
+  flex-direction: row
+  overflow: scroll
+.product
+  text-align: center
+  margin-right: 5px
+.product-img
+  height: 80px
+  width: 80px
+  border-radius: 10px
+.selectedProduct
+  margin-bottom: 20px
+  position: relative
+
+.ingredient-img
+  height: 50px
+  border-radius: 10px
+  width: 50px
+  margin-bottom: 10px
+  border: 3px solid #f53c3c
+.ingredient-img.cando
+  border: 4px solid #3d9d55
+.ingredient-infos
+  height: 50px
+.ingredient-name
+  display: block
+  font-weight: bold
+.ingredient-quantity
+
+.product-quantity__input
+  width: 100px
+
+.separator
+  height: 5px
+  margin: 5px
+  background-color: white
+  width: 100%
+
+#editQuantity
+  width: 60px
+
+/*****************************************
+ *           Courses
+ *****************************************/
+
+#lowStocks
+  .product
+    position: relative
+    margin: 0 auto
+    margin-top: 40px
+    #quantity-display
+      position: absolute
+      background-color: #a41a33
+      color: white
+      font-weight: bold
+      border-radius: 4px
+      right: 0
+      width: 40px
+    .productImg
+      height: 110px
+      width: 110px
+      border-radius: 55px
+      border: 6px solid
+    #placeholder
+      position: absolute
+      background-color: #a41a33
+      border-radius: 5px
+      height: 30px
+      width: 110px
+      bottom: -15px
+      line-height: 30px
+      font-weight: bold
+      color: $stockItemsColor--placeholder
+  .product.critical
+    .productImg
+      border-color: #f53c3c
+    #placeholder
+      background-color: #f53c3c
+    #quantity-display
+      background-color: #f53c3c
+  .product.cool
+    .productImg
+      border-color: #3d9d55
+    #placeholder
+      background-color: #3d9d55
+    #quantity-display
+      background-color: #3d9d55
+  .product.alert
+    .productImg
+      border-color: #f75928
+    #placeholder
+      background-color: #f75928
+    #quantity-display
+      background-color: #f75928
+  .product.warning
+    .productImg
+      border-color: #f9b138
+    #placeholder
+      background-color: #f9b138
+    #quantity-display
+      background-color: #f9b138
+
+
+
+#stockSettings
+  width: auto
+  max-height: 0px
+  transition: max-height 0.5s
+  overflow: hidden
+  margin-left: 60px
+  background-color: #67bee3
+  border-radius: 10px
+  display: block
+  .secTitle
+    font-weight: bold
+    font-size: 20px
+    color: white
+    margin-bottom: 10px
+  #seuils
+    width: 100%
+    display: block
+  #filters
+    width: 100%
+    padding-left: 10px
+    display: block
+    .filter
+      margin: 6px
+
+.indicator
+  color: white
+#acceptable-label
+  font-weight: bold
+  color: #3d9d55
+#warning-label
+  font-weight: bold
+  color: #f9b138
+#alert-label
+  font-weight: bold
+  color: #f75928
+#critical-label
+  font-weight: bold
+  color: #f53c3c
+
+#stockSettings.active
+  max-height: 450
+  transition: max-height 0.5s
+  padding: 10px
+#pull-button
+  position: absolute
+  height: 60px
+  width: 60px
+  font-size: 40px
+  line-height: 60px
+  text-align: center
+
+footer
+  position: relative
+  display: block
+  bottom: 0
+#copyrights
+  color: #939393
+  float: right
+  margin-right: 20px
+  margin-top: 20px
+  bottom: 0
+  #name
+    font-weight: bold
+
+/*****************************************
+ *           Breakpoints
+ *****************************************/
+
+@include breakpoint(340px)
+  #homeContent
+    height: 35%
+
+@include breakpoint(500px)
+  .container
+  .flex-container
+    max-width: 400px
+  #homeContent
+    height: 30%
+/*****************************************
+ *           Tablets
+ *****************************************/
+
+@include breakpoint($tablet)
+  .container
+  .flex-container
+    max-width: 600px
+
+
+  #stockSettings
+    width: auto
+    #seuils
+      width: 60%
+      float: left
+    #filters
+      width: 40%
+      float: right
+/*****************************************
+ *           Computer
+ *****************************************/
+
+@include breakpoint($computer)
+  .container
+  .flex-container
+    margin-left: 20px
+    padding-top: 20px
+    max-width: 100%
+
+
+    #nav
+      position: absolute
+      right: 0
+      ul
+        li
+          line-height: 60px
+          float: left
+          list-style-type: none
+          a
+            display: block
+            color: white
+            text-decoration: none
+            padding: 0 10px
+            &:hover
+              background-color: $menu-item-background-color

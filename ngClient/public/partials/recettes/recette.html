@@ -1,0 +1,47 @@
+<div class="center-container">
+<div class="headTitle"><span class="cross"></span> {{recipe.recipeName}} <span class="cross"></span></div>
+
+<div class="localTitle">Ingredients</div>
+
+<div class="ingredients">
+<div class="ingredient" ng-repeat="ingredient in ingredients">
+  <img ng-click="editQuantity(ingredient)" class="ingredient-img" ng-class="{'canDo' : isEnough(ingredient)}" ng-src="{{ingredient.product.img}}"/>
+  {{ingredient.product.productName}} -
+  <span ng-hide="ingredient.editing">{{ingredient.quantity}} ( {{ingredient.product.quantity}} )
+    <span class="material-icons" ng-click="editQuantity(ingredient)">edit</span>
+  </span>
+  <span ng-show="ingredient.editing">
+    <div id="editQuantity" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" ng-model="ingredient.quantity">
+      <label class="mdl-textfield__label" for="sample4">Quantité</label>
+      <span class="mdl-textfield__error">Ce n'est pas un nombre !</span>
+    </div>
+    <i ng-click="edit(ingredient)" class="material-icons">done</i> -
+    <i ng-click="editQuantity(ingredient)" class="material-icons">clear</i> -
+    <span class="material-icons" ng-click="deleteIngredient(ingredient)">delete</span>
+  </span>
+</div>
+</div>
+
+<div class="selectedProduct" ng-show="selectedProduct">
+  <div class="separator"></div>
+  <div class="ingredient-name">{{selectedProduct.productName}}</div>
+  <img class="Ingredient-img" ng-src="{{selectedProduct.img}}"/>
+
+    <div class="product-quantity__input mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <input class="mdl-textfield__input" type="text" id="quantity" ng-model="selectedProduct.quantity">
+      <label class="mdl-textfield__label" for="quantity">Quantité</label>
+    </div>
+    <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" ng-click="addIngredient(selectedProduct)">Ajouter</button>
+
+  <div class="separator"></div>
+</div>
+
+<div class="localTitle"> Liste des produits </div>
+<div class="products-list">
+  <div class="product" ng-repeat="product in products">
+    <img class="product-img" ng-src="{{product.img}}" ng-click="selectProduct(product)"/>
+    <div class="product-name">{{product.productName}}</div>
+  </div>
+</div>
+</div>

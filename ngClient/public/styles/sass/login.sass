@@ -1,0 +1,139 @@
+@import "../../../bower_components/susy/sass/susy"
+@import "../../../bower_components/breakpoint-sass/stylesheets/breakpoint"
+
+// Variables
+$computer: 970px
+$tablet: 730px
+$phone: 480px
+
+// Colors
+$background-color: #0cb1a2
+$mini-title-color: #ffffff
+$submit-color: #e86d57
+$buttons-color: #5fb7e8
+
+#header
+  display: none
+
+
+
+.login
+  color:white
+  position: fixed
+  width: 100%
+  height: 100%
+  top: 0px
+  left: 0px
+  z-index: 1
+  background-image: url('/img/bg.png')
+  background-size: cover
+  background-repeat:no-repeat
+
+  .container
+    display: flex
+    flex-direction: row
+    flex-wrap: wrap
+    justify-content: center
+    align-items: center
+    margin: 0 auto
+
+    #fridge
+      position: relative
+      width: 284px
+      margin: 0 auto
+      img
+        width: 100%
+
+
+      #input
+        position: absolute
+        left: 50px
+        max-width: 156px
+
+
+    #buttons
+      position: absolute
+      width: 90px
+      height: 20px
+      font-size: 10px
+      padding: 0px
+      line-height: 20px
+      bottom: 22px
+
+    #usernameInput
+      @extend #input
+      top: 111px
+
+    #passwordInput
+      @extend #input
+      bottom: 89px
+
+    #password2Input
+      @extend #passwordInput
+      bottom: 120px
+
+    #signup
+      @extend #buttons
+      position: absolute
+      color: white
+      background-color: $buttons-color
+      font-weight: bold
+      left: 27px
+
+
+    #submit
+      @extend #buttons
+      right: 65px
+      background-color: $buttons-color
+      font-weight: bold
+
+    #submitRegister
+      @extend #submit
+
+    #login
+      @extend #signup
+      bottom: 175px
+      left: 102px
+
+#passwordInput1
+  @extend #input
+  bottom: 88px
+
+#passwordInput2
+  @extend #input
+  bottom: 38px
+
+.tablet-visible
+  display: none
+
+@include breakpoint($tablet)
+  .container
+    width: 40%
+    float: right
+  .tablet-visible
+    display: block
+    margin: 0 auto
+
+  #pageTitle
+    position: absolute
+    width: 100%
+    top: 40px
+    padding-top: 50px
+    line-height: 40px
+    text-align: center
+    font-size: 40px
+    font-weight: bolder
+    color: #f9ffff
+
+  .left-container
+    float: left
+    margin-top: 50vh
+    transform: translateY(-50%)
+    margin-left: 40px
+    width: calc(60% - 40px)
+    border: 2px solid black
+
+  #presentation
+    display: block
+    padding: 0 50px
+    text-align: center

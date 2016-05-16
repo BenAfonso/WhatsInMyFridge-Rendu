@@ -1,0 +1,31 @@
+{
+  "name": "ngclient",
+  "version": "1.0.0",
+  "description": "Angular client for What's in my Fridge Application (Interacting with REST Api)",
+  "main": "index.js",
+  "scripts": {
+    "postinstall": "bower install && bower-installer && grunt uglify",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "grunt deploy"
+  },
+  "author": "Benjamin AFONSO",
+  "license": "ISC",
+  "dependencies": {
+    "angular": "^1.5.5",
+    "angular-resource": "^1.5.5",
+    "angular-route": "^1.5.5",
+    "bower-installer": "^1.2.0",
+    "express": "^4.13.4",
+    "grunt": "^1.0.1",
+    "grunt-concurrent": "^2.3.0",
+    "grunt-contrib-cssmin": "^1.0.1",
+    "grunt-contrib-jshint": "^1.0.0",
+    "grunt-contrib-sass": "^1.0.0",
+    "grunt-contrib-uglify": "^1.0.1",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-nodemon": "^0.4.2"
+  },
+  "devDependencies": {
+    "grunt-wiredep": "^3.0.1"
+  }
+}

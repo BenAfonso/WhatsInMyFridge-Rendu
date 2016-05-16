@@ -1,0 +1,33 @@
+{
+  "name": "whats-in-my-fridge",
+  "version": "2.0.0",
+  "description": "A node web app to know what's in your fridge",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Darkyler/WhatsInMyFridge.git"
+  },
+  "author": "Benjamin AFONSO",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Darkyler/WhatsInMyFridge/issues"
+  },
+  "homepage": "https://github.com/Darkyler/WhatsInMyFridge#readme",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "cli-color": "^1.1.0",
+    "crypto": "0.0.3",
+    "express": "^4.13.4",
+    "express-router": "0.0.1",
+    "jsonwebtoken": "^5.7.0",
+    "jwt-simple": "^0.5.0",
+    "morgan": "^1.7.0",
+    "path": "^0.12.7",
+    "pg": "^4.5.3",
+    "request": "^2.72.0"
+  }
+}

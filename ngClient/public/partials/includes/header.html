@@ -1,0 +1,15 @@
+<div id="header">
+    <div class="logo" ng-click="go('/')"><img src="/img/catFridge.png"><span id="title">WIMF</span></div>
+    <div id="openNav" ng-click="toggleNav()">
+      <span></span><span></span><span></span>
+    </div>
+    <nav id="nav" ng-click="closeNav()" ng-class="{'open' : isOpenedNav()}">
+      <ul>
+        <li><a ng-click="go('/')">Accueil</a></li>
+        <li><a ng-click="go('/panel')">Mon Frigo</a></li>
+        <li><a href="#/mescourses">Mes Courses</a></li>
+        <li><a href="#/mesrecettes">Mes Recettes</a></li>
+        <li><a ng-click="logout()">Deconnexion</a></li>
+      </ul>
+    </nav>
+</div>

@@ -3,7 +3,7 @@
 Made with :heart: by **AFONSO Benjamin**
 
 
-This is an web application based on an AngularJS Client, a NodeJS API and a PostgreSQL Database. This application helps you tracking what you have left in your fridge. Check report for more infos ;)
+This is a web application based on an AngularJS Client, a NodeJS API and a PostgreSQL Database. This application helps you tracking what you have left in your fridge. Check report for more infos ;)
 
 ***To run, modify the database config file ( *Server/config/database.js* )***
 
